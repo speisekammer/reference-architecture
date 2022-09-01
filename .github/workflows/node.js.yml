@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -27,15 +27,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
     - run: yarn
-    
+
     - name: Build Entities
       run: cd entities && yarn && yarn build
-      
+
     - name: Test Entities
       run: cd entities && yarn test
-      
+
     - name: Build Interactors
       run: cd interactors && yarn && yarn build
-      
+
     - name: Test Interactors
       run: cd interactors && yarn test
