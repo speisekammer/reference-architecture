@@ -1,4 +1,7 @@
 {
   "private": true,
-  "workspaces": ["entities", "interactors", "firebase-gateway", "app"]
+  "workspaces": ["entities", "interactors", "firebase-gateway", "app"],
+  "scripts": {
+    "start": "yarn start"
+  }
 }

@@ -2,6 +2,9 @@
   "name": "interactors",
   "version": "0.0.1",
   "dependencies": {
-    "entities": "0.0.1"
-  }
+    "entities": "*"
+  },
+  "description": "This package contains use-cases that operate on entities. This is application-specific business-logic.",
+  "main": "index.js",
+  "license": "MIT"
 }

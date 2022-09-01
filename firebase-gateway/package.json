@@ -2,6 +2,9 @@
   "name": "firebase-gateway",
   "version": "0.0.1",
   "dependencies": {
-    "interactors": "0.0.1"
-  }
+    "interactors": "*"
+  },
+  "description": "Uses firebase-sdk to provide persistence for our entities.",
+  "main": "index.js",
+  "license": "MIT"
 }
