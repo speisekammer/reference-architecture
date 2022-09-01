@@ -1,1 +1,2 @@
-export const Foo = 1;
+import {Task} from './Task'
+export {Task}
