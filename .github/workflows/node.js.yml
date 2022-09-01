@@ -39,3 +39,6 @@ jobs:
 
     - name: Test Interactors
       run: cd interactors && yarn test
+
+    - name: Build Firebase-Gateway
+      run: cd firebase-gateway && yarn && yarn build
