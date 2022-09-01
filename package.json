@@ -2,6 +2,11 @@
   "private": true,
   "workspaces": ["entities", "interactors", "firebase-gateway", "app"],
   "scripts": {
-    "start": "yarn start"
+    "build:entities": "cd entities && npm run build",
+    "build:interactors": "cd interactors && npm run build",
+    "build:firebase-gateway": "cd firebase-gateway && npm run build",
+    "build:app": "cd app && npm run build",
+    "build": "npm run build:entities && npm run build:interactors && npm run build:firebase-gateway && npm run build:app",
+    "start": "cd app && yarn start"
   }
 }

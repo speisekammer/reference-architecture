@@ -10,14 +10,14 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "entities": "*",
+    "firebase-gateway": "*",
+    "interactors": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0",
-    "entities": "0.0.1",
-    "interactors": "0.0.1",
-    "firebase-gateway": "0.0.1"
+    "web-vitals": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,5 +42,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^13.3.0",
+    "firebase-tools": "^11.8.0"
   }
 }
