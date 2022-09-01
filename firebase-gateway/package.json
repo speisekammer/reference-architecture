@@ -1,0 +1,7 @@
+{
+  "name": "firebase-gateway",
+  "version": "0.0.1",
+  "dependencies": {
+    "interactors": "0.0.1"
+  }
+}

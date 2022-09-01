@@ -1,0 +1,7 @@
+{
+  "name": "interactors",
+  "version": "0.0.1",
+  "dependencies": {
+    "entities": "0.0.1"
+  }
+}
