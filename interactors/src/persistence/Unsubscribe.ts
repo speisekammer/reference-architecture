@@ -1,3 +1,2 @@
 
-
-export type Unsubscribe = () => void;
+export type Unsubscribe = () => void

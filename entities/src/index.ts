@@ -1,2 +1,2 @@
-import {Task} from './Task'
-export {Task}
+import { Task } from './Task'
+export { Task }

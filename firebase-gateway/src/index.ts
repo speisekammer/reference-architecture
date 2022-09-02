@@ -1,3 +1,3 @@
 
-import {FirebaseGateway} from './FirebaseGateway';
-export {FirebaseGateway};
+import { FirebaseGateway } from './FirebaseGateway'
+export { FirebaseGateway }

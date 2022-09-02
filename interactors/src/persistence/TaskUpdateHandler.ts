@@ -1,3 +1,3 @@
-import {Task} from "entities";
+import { Task } from 'entities'
 
-export type TaskUpdateHandler = (tasks: Task[]) => void;
+export type TaskUpdateHandler = (tasks: Task[]) => void

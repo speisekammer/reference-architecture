@@ -1,7 +1,7 @@
-import {Task} from "entities";
+import { TaskRepresentation } from '../models/response/TaskRepresentation'
 
 export interface RequestBoundary {
-    addTask(task: Task): Promise<void>
-    removeTask(id: string): Promise<void>
-    checkTask(id: string): Promise<void>
+  addTask: (task: TaskRepresentation) => Promise<void>
+  removeTask: (id: string) => Promise<void>
+  checkTask: (id: string) => Promise<void>
 }

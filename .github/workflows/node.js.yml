@@ -28,11 +28,29 @@ jobs:
         cache: 'yarn'
     - run: yarn
 
-    - name: Build Entities
-      run: cd entities && yarn && yarn build
+    - name: Entities dependencies
+      run: cd entities && yarn install
 
-    - name: Test Entities
+    - name: Entities style
+      run: cd entities && yarn lint
+
+    - name: Entities test
       run: cd entities && yarn test
+
+    - name: Entities build
+      run: cd entities && yarn build
+
+    - name: Interactors dependencies
+      run: cd interactors && yarn install
+
+    - name: Interactors style
+      run: cd interactors && yarn lint
+
+    - name: Interactors test
+      run: cd interactors && yarn test
+
+    - name: Interactors build
+      run: cd interactors && yarn build
 
     - name: Build Interactors
       run: cd interactors && yarn && yarn build

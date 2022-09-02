@@ -1,15 +1,14 @@
 export class Task {
-    constructor() {
-        this.checked = false
-    }
+  constructor () {
+    this.checked = false
+  }
 
-    title: string;
-    id: string;
-    description: string;
-    checked: boolean;
+  title?: string
+  id?: string
+  description?: string
+  checked: boolean
 
-    check() {
-        this.checked = true;
-    }
-
+  check (): void {
+    this.checked = true
+  }
 }
