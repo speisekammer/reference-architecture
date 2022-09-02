@@ -1,8 +1,7 @@
-import {Task} from "entities";
+import {TaskRepresentation} from "../models/response/TaskRepresentation";
 
 export interface ResponseBoundary {
 
-    renderTask(id: string): Promise<Task>;
-    renderTasks(): Promise<Task[]>;
+    renderTasks(tasks: TaskRepresentation[]): Promise<void>;
 
 }

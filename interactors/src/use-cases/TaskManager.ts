@@ -12,7 +12,7 @@ export class TaskManager implements RequestBoundary {
         this.taskPersistence = persistence
     }
 
-    setResponsBoundary(response: ResponseBoundary): void {
+    setResponseBoundary(response: ResponseBoundary): void {
         this.responseBoundary = response
     }
 
@@ -22,6 +22,12 @@ export class TaskManager implements RequestBoundary {
 
     removeTask(id: string): Promise<void> {
         return this.taskPersistence.deleteTask(id)
+    }
+
+    async listenToTaskUpdates(): Promise<void> {
+        await this.taskPersistence.listenToTasks(
+            (tasks) => this.responseBoundary.renderTasks(tasks)
+        )
     }
 
     checkTask(id: string): Promise<void> {

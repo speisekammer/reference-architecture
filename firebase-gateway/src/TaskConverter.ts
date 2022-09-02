@@ -1,9 +1,13 @@
 import {Task} from "entities";
 import {DocumentData, QueryDocumentSnapshot, SnapshotOptions } from "firebase/firestore";
 
+function removeEmpty(obj: Object) {
+    return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v != null).filter(([_, v]) => v != undefined));
+}
+
 const TaskConverter = {
     toFirestore(task: Task): DocumentData {
-        return {id: task.id, title: task.title, description: task.description, checked: task.checked};
+        return removeEmpty({title: task.title, description: task.description, checked: task.checked});
     },
     fromFirestore(
         snapshot: QueryDocumentSnapshot,

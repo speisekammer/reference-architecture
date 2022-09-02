@@ -1,6 +1,8 @@
 import {Persistence} from "../persistence/Persistence";
 import {Task} from "entities";
 import {TaskManager} from "./TaskManager";
+import {Unsubscribe} from "../persistence/Unsubscribe";
+import {TaskUpdateHandler} from "../persistence/TaskUpdateHandler";
 
 class InMemoryPersistence implements Persistence {
     private tasks: Task[] = [];
@@ -16,9 +18,21 @@ class InMemoryPersistence implements Persistence {
     async deleteTask(id: string): Promise<void> {
         this.tasks = this.tasks.filter(task => task.id !== id);
     }
+
+    readTasks(): Promise<Task[]> {
+        return Promise.resolve(this.tasks);
+    }
+
+    listenToTasks(updateHandler: TaskUpdateHandler): Unsubscribe {
+        return () => {}
+    }
+
+    stopListeningToTasks() {
+        return
+    }
 }
 
-describe('TsdkManager', () => {
+describe('TaskManager', () => {
     it('should be possible to set a persistence', () => {
         const taskManager = new TaskManager()
         const persistence = new InMemoryPersistence()
