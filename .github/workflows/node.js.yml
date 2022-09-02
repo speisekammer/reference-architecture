@@ -28,35 +28,11 @@ jobs:
         cache: 'yarn'
     - run: yarn
 
-    - name: Entities dependencies
-      run: cd entities && yarn install
+    - name: Check style
+      run: yarn lint
 
-    - name: Entities style
-      run: cd entities && yarn lint
+    - name: Run unit tests
+      run: yarn test
 
-    - name: Entities test
-      run: cd entities && yarn test
-
-    - name: Entities build
-      run: cd entities && yarn build
-
-    - name: Interactors dependencies
-      run: cd interactors && yarn install
-
-    - name: Interactors style
-      run: cd interactors && yarn lint
-
-    - name: Interactors test
-      run: cd interactors && yarn test
-
-    - name: Interactors build
-      run: cd interactors && yarn build
-
-    - name: Build Interactors
-      run: cd interactors && yarn && yarn build
-
-    - name: Test Interactors
-      run: cd interactors && yarn test
-
-    - name: Build Firebase-Gateway
-      run: cd firebase-gateway && yarn && yarn build
+    - name: Build
+      run: yarn build
