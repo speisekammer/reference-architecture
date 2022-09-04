@@ -17,7 +17,6 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
@@ -26,13 +25,18 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-    - run: yarn
 
-    - name: Check style
-      run: yarn lint
+    - name: Install dependencies
+      run: yarn install
 
-    - name: Run unit tests
-      run: yarn test
+    - name: Entities
+      run: cd entities && yarn && yarn lint && yarn test && yarn build
 
-    - name: Build
-      run: yarn build
+    - name: Interactors
+      run: cd interactors && yarn && yarn lint && yarn test && yarn build
+
+    - name: Firebase-Gateway
+      run: cd firebase-gateway && yarn && yarn lint && yarn test && yarn build
+
+    - name: App
+      run: cd app && yarn && yarn lint && yarn test && yarn build
