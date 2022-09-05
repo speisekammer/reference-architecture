@@ -1,8 +1,8 @@
 import { FC, ReactNode, useEffect, useState } from 'react'
 import { TaskRepresentation, TaskUseCases } from 'interactors'
 import { FirestoreTaskPersistence } from 'firebase-gateway'
-import { TaskPresenter } from '../presenter/TaskPresenter'
-import { TaskContext, TaskContextType } from '../TaskContext'
+import { TaskContext, TaskContextType } from '../../TaskContext'
+import { TaskPresenter } from '../../presenters/TaskPresenter'
 
 export interface TaskContextProviderProps {
   children: ReactNode

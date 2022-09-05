@@ -10,6 +10,7 @@ export const Task: FC<TaskProps> = ({ task }) => {
         <div>
             <h1>{task.title}</h1>
             <p>{task.description}</p>
+            <input type={'checkbox'} checked={task.checked} readOnly></input>
         </div>
   )
 }

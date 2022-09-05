@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
-import './App.css'
-import TodoApp from './components/TodoApp/TodoApp'
-import TaskContextProvider from './components/TaskContextProvider'
+import '../App.css'
+import TodoApp from '../components/organisms/TodoApp/TodoApp'
+import TaskContextProvider from '../components/providers/TaskContextProvider'
 
 function App (): ReactElement {
   return (

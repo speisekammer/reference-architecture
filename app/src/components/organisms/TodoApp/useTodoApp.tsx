@@ -1,4 +1,4 @@
-import { useTaskContext } from '../../TaskContext'
+import { useTaskContext } from '../../../TaskContext'
 import { TaskRepresentation, TaskUseCases } from 'interactors'
 
 interface UseTodoAppReturnType {

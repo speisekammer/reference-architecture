@@ -2,12 +2,12 @@ import { FC } from 'react'
 
 import { TaskContext, TaskContextType } from '../../TaskContext'
 import { TaskRepresentation, TaskUseCases } from 'interactors'
-import { TaskContextProviderProps } from '../../components/TaskContextProvider'
+import { TaskContextProviderProps } from '../../components/providers/TaskContextProvider'
 
 const DummyTaskContextProvider: FC<TaskContextProviderProps> = ({ children }) => {
   const tasks = [
     { id: '1', title: 'A', description: 'B', checked: false },
-    { id: '2', title: 'C', description: 'D', checked: false },
+    { id: '2', title: 'C', description: 'D', checked: true },
     { id: '3', title: 'E', description: 'F', checked: false }
   ]
 

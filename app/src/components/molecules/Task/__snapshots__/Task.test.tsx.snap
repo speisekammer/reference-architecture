@@ -12,6 +12,10 @@ Object {
         <p>
           Test Description
         </p>
+        <input
+          readonly=""
+          type="checkbox"
+        />
       </div>
     </div>
   </body>,
@@ -23,6 +27,10 @@ Object {
       <p>
         Test Description
       </p>
+      <input
+        readonly=""
+        type="checkbox"
+      />
     </div>
   </div>,
   "debug": [Function],

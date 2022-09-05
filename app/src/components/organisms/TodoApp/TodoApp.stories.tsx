@@ -1,6 +1,6 @@
 import TodoApp from './TodoApp'
 import { ReactElement } from 'react'
-import DummyTaskContextProvider from '../../testHelpers/dummyProviders/DummyTaskContextProvider'
+import DummyTaskContextProvider from '../../../testHelpers/dummyProviders/DummyTaskContextProvider'
 
 export default {
   title: 'TodoApp',

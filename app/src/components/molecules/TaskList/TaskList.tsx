@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { TaskRepresentation } from 'interactors'
-import { Task } from './Task'
+import { Task } from '../Task'
 
 interface TaskProps {
   tasks: TaskRepresentation[]

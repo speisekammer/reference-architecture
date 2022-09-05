@@ -1,5 +1,5 @@
-import { TaskList } from '../TaskList'
-import { Button } from '../Button/Button'
+import { TaskList } from '../../molecules/TaskList/TaskList'
+import { Button } from '../../atoms/Button/Button'
 import React, { FC } from 'react'
 import useTodoApp from './useTodoApp'
 import { TaskRepresentation } from 'interactors'
