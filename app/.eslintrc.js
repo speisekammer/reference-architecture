@@ -14,7 +14,6 @@ module.exports = {
     }
   },
   extends: [
-    'plugin:react/recommended',
     'standard-with-typescript'
   ],
   overrides: [
@@ -24,9 +23,6 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: [
-    'react'
-  ],
   rules: {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off'

@@ -1,33 +1,37 @@
-import typescript from '@rollup/plugin-typescript';
-import dts from 'rollup-plugin-dts';
-
-import tsConfig from './tsconfig.json';
+import typescript from '@rollup/plugin-typescript'
+import dts from 'rollup-plugin-dts'
+import tsConfig from './tsconfig.json'
+import babel from 'rollup-plugin-babel'
 
 const config = [
-    {
-        input: "src/index.ts",
-        output: [{ file: "build/src/index.js", sourcemap: true }],
-        plugins: [
-            typescript(
-                {
-                    sourceMap: tsConfig.compilerOptions.sourceMap
-                }
-            )
-        ]
-    },
-    {
-        input: 'build/src/index.d.ts',
-        output: [{ file: "build/src/index.d.ts", "format": "es" }],
-        plugins: [
-            dts(
-                {
-                    compilerOptions: {
-                        baseUrl: tsConfig.compilerOptions.baseUrl
-                    }
-                }
-            )
-        ]
-    },
+  {
+    input: 'src/index.ts',
+    output: [{ file: 'build/src/index.js', sourcemap: true, format: 'commonjs' }],
+    plugins: [
+      babel({
+        exclude: 'node_modules/**'
+      }),
+      typescript(
+        {
+          sourceMap: tsConfig.compilerOptions.sourceMap
+        }
+      )
+    ],
+    external: ['entities']
+  },
+  {
+    input: 'build/src/index.d.ts',
+    output: [{ file: 'build/src/index.d.ts', format: 'commonjs' }],
+    plugins: [
+      dts(
+        {
+          compilerOptions: {
+            baseUrl: tsConfig.compilerOptions.baseUrl
+          }
+        }
+      )
+    ]
+  }
 ]
 
-export default config;
+export default config

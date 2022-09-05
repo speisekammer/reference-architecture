@@ -1,8 +1,8 @@
-import { Task } from 'entities'
 import { RequestBoundary } from '../interfaces/RequestBoundary'
 import { Persistence } from '../persistence/Persistence'
 import { ResponseBoundary } from '../interfaces/ResponseBoundary'
 import { TaskRepresentation } from '../models/response/TaskRepresentation'
+import { Task } from 'entities'
 
 function toTaskRepresentation (tasks: Task[]): TaskRepresentation[] {
   return tasks.map(task => {
