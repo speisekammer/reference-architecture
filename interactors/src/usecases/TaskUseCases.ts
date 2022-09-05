@@ -1,36 +1,15 @@
 import { RequestBoundary } from '../interfaces/RequestBoundary'
-import { Persistence } from '../persistence/Persistence'
+import { TaskPersistenceGateway } from '../persistence/TaskPersistenceGateway'
 import { ResponseBoundary } from '../interfaces/ResponseBoundary'
-import { TaskRepresentation } from '../models/response/TaskRepresentation'
+import { TaskRepresentation } from '../models/TaskRepresentation'
 import { Task } from 'entities'
+import { fromTaskRepresentation, toTaskRepresentation } from '../mapper/TaskMapper'
 
-function toTaskRepresentation (tasks: Task[]): TaskRepresentation[] {
-  return tasks.map(task => {
-    const taskRepresentation: TaskRepresentation = {
-      id: task.id,
-      title: task.title,
-      description: task.description,
-      checked: task.checked
-    }
-    return taskRepresentation
-  })
-}
-
-function fromTaskRepresentation (taskRepresentation: TaskRepresentation): Task {
-  const task: Task = new Task()
-  task.id = taskRepresentation.id
-  task.description = taskRepresentation.description
-  task.title = taskRepresentation.title
-  task.checked = taskRepresentation.checked
-
-  return task
-}
-
-export class TaskManager implements RequestBoundary {
-  taskPersistence: Persistence
+export class TaskUseCases implements RequestBoundary {
+  taskPersistence: TaskPersistenceGateway
   responseBoundary: ResponseBoundary
 
-  constructor (responseBoundary: ResponseBoundary, taskPersistence: Persistence) {
+  constructor (responseBoundary: ResponseBoundary, taskPersistence: TaskPersistenceGateway) {
     this.taskPersistence = taskPersistence
     this.responseBoundary = responseBoundary
   }

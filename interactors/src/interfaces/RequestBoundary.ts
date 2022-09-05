@@ -1,4 +1,4 @@
-import { TaskRepresentation } from '../models/response/TaskRepresentation'
+import { TaskRepresentation } from '../models/TaskRepresentation'
 
 export interface RequestBoundary {
   addTask: (task: TaskRepresentation) => Promise<void>

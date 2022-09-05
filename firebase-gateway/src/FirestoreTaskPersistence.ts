@@ -1,4 +1,4 @@
-import { Persistence, TaskUpdateHandler } from 'interactors'
+import { TaskPersistenceGateway, TaskUpdateHandler } from 'interactors'
 import { Task } from 'entities'
 import { initializeApp } from 'firebase/app'
 import {
@@ -15,7 +15,7 @@ import {
 } from 'firebase/firestore'
 import { TaskConverter } from './TaskConverter'
 
-export class FirebaseGateway implements Persistence {
+export class FirestoreTaskPersistence implements TaskPersistenceGateway {
   db: Firestore
   unsubscribe: Unsubscribe | undefined
 
@@ -63,7 +63,7 @@ export class FirebaseGateway implements Persistence {
   async readTasks (): Promise<Task[]> {
     const colRef = collection(this.db, 'tasks').withConverter(TaskConverter)
     const docSnap = await getDocs<Task>(colRef)
-    return docSnap.docs.map(doc => doc.data())
+    return docSnap.docs.map(taskDoc => taskDoc.data())
   }
 
   listenToTasks (updateHandler: TaskUpdateHandler): void {
@@ -72,7 +72,7 @@ export class FirebaseGateway implements Persistence {
     const colRef = collection(this.db, 'tasks').withConverter(TaskConverter)
 
     this.unsubscribe = onSnapshot(colRef, (snapshot) => {
-      updateHandler(snapshot.docs.map(doc => doc.data()))
+      updateHandler(snapshot.docs.map(taskDoc => taskDoc.data()))
     })
   }
 

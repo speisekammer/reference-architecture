@@ -1,8 +1,8 @@
-import { TaskManager } from './use-cases/TaskManager'
-import { Persistence } from './persistence/Persistence'
+import { TaskUseCases } from './usecases/TaskUseCases'
+import { TaskPersistenceGateway } from './persistence/TaskPersistenceGateway'
 import { ResponseBoundary } from './interfaces/ResponseBoundary'
 import { RequestBoundary } from './interfaces/RequestBoundary'
-import { TaskRepresentation } from './models/response/TaskRepresentation'
-import { TaskUpdateHandler } from './persistence/TaskUpdateHandler'
+import { TaskRepresentation } from './models/TaskRepresentation'
+import { TaskUpdateHandler } from './persistence/UpdateHandlers'
 
-export { TaskManager, Persistence, RequestBoundary, ResponseBoundary, TaskRepresentation, TaskUpdateHandler }
+export { TaskUseCases, TaskPersistenceGateway, RequestBoundary, ResponseBoundary, TaskRepresentation, TaskUpdateHandler }

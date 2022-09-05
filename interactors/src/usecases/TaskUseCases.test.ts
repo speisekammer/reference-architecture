@@ -1,16 +1,15 @@
-import { Persistence } from '../persistence/Persistence'
+import { TaskPersistenceGateway } from '../persistence/TaskPersistenceGateway'
 import { Task } from 'entities'
-import { TaskManager } from './TaskManager'
-import { Unsubscribe } from '../persistence/Unsubscribe'
-import { TaskUpdateHandler } from '../persistence/TaskUpdateHandler'
+import { TaskUseCases } from './TaskUseCases'
 import { ResponseBoundary, TaskRepresentation } from 'src'
+import { TaskUpdateHandler } from '../persistence/UpdateHandlers'
 
 class TestResponse implements ResponseBoundary {
   renderTasks (_tasks: TaskRepresentation[]): void {
   }
 }
 
-class InMemoryPersistence implements Persistence {
+class InMemoryPersistence implements TaskPersistenceGateway {
   private tasks: Task[] = []
 
   async readTask (id: string): Promise<Task> {
@@ -33,8 +32,7 @@ class InMemoryPersistence implements Persistence {
     return await Promise.resolve(this.tasks)
   }
 
-  listenToTasks (_updateHandler: TaskUpdateHandler): Unsubscribe {
-    return () => {}
+  listenToTasks (_updateHandler: TaskUpdateHandler): void {
   }
 
   stopListeningToTasks (): void {
@@ -45,7 +43,7 @@ describe('TaskManager', () => {
   it('should be possible to set a persistence', () => {
     const response = new TestResponse()
     const persistence = new InMemoryPersistence()
-    const taskManager = new TaskManager(response, persistence)
+    const taskManager = new TaskUseCases(response, persistence)
     expect(taskManager.responseBoundary).toBe(response)
     expect(taskManager.taskPersistence).toBe(persistence)
   })

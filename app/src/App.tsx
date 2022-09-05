@@ -1,33 +1,29 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import './App.css'
-import { FirebaseGateway } from 'firebase-gateway'
-import { TaskManager, TaskRepresentation } from 'interactors'
+import { FirestoreTaskPersistence } from 'firebase-gateway'
+import { TaskUseCases, TaskRepresentation } from 'interactors'
 import { TaskPresenter } from './presenter/TaskPresenter'
-import { TaskList } from './components/TaskList'
+import TodoApp from './components/TodoApp/TodoApp'
 
 function App (): ReactElement {
-  const [taskManager, setTaskManager] = useState<TaskManager>()
+  const [taskUseCases, setTaskUseCases] = useState<TaskUseCases>()
   const [tasks, setTasks] = useState<TaskRepresentation[]>([])
 
   useEffect(() => {
-    if (taskManager == null) {
-      const gateway = new FirebaseGateway()
+    if (taskUseCases == null) {
+      const firestoreTaskPersistence = new FirestoreTaskPersistence()
       const presenter = new TaskPresenter(setTasks)
-      const taskManager = new TaskManager(presenter, gateway)
-      taskManager.listenToTaskUpdates()
-      setTaskManager(taskManager)
+      const taskUseCases1 = new TaskUseCases(presenter, firestoreTaskPersistence)
+      taskUseCases1.listenToTaskUpdates()
+      setTaskUseCases(taskUseCases1)
     }
-  }, [taskManager])
+  }, [taskUseCases])
 
   const addTask = (task: TaskRepresentation): void => {
-    try {
-      if (taskManager !== undefined) {
-        taskManager.addTask(task).then(() => {
-          console.log('added task')
-        }).catch(console.error)
-      }
-    } catch (e) {
-      window.alert(e)
+    if (taskUseCases !== undefined) {
+      taskUseCases.addTask(task).then(() => {
+        console.log('added task')
+      }).catch(console.error)
     }
   }
 
@@ -39,10 +35,7 @@ function App (): ReactElement {
 
   return (
     <div className="App">
-      <header className="App-header">Task-App
-      </header>
-      <TaskList tasks={tasks}></TaskList>
-        <button onClick={() => addTask(exampleTask)}>Create Task</button>
+      <TodoApp tasks={tasks} handleClick={() => addTask(exampleTask)}/>
     </div>
   )
 }

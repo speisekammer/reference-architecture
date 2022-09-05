@@ -5,7 +5,7 @@ interface TaskProps {
   task: TaskRepresentation
 }
 
-export const TaskComponent: FC<TaskProps> = ({ task }) => {
+export const Task: FC<TaskProps> = ({ task }) => {
   return (
         <div>
             <h1>{task.title}</h1>

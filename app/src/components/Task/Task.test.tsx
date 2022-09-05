@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import { TaskComponent } from './TaskComponent'
+import { Task } from './Task'
 import { TaskRepresentation } from 'interactors'
 
 describe('Task', () => {
@@ -10,7 +10,7 @@ describe('Task', () => {
       description: 'Test Description',
       checked: false
     }
-    const view = render(<TaskComponent task={task} />)
+    const view = render(<Task task={task} />)
     expect(view).toMatchSnapshot()
   })
 })

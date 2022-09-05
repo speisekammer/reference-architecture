@@ -1,3 +1,3 @@
 
-import { FirebaseGateway } from './FirebaseGateway'
-export { FirebaseGateway }
+import { FirestoreTaskPersistence } from './FirestoreTaskPersistence'
+export { FirestoreTaskPersistence }
