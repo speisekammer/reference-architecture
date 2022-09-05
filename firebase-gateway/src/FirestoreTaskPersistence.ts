@@ -51,7 +51,11 @@ export class FirestoreTaskPersistence implements TaskPersistenceGateway {
       const docRef = doc<Task>(colRef, task.id)
       return await setDoc<Task>(docRef, task)
     } else {
-      await addDoc<Task>(colRef, task)
+      try {
+        await addDoc<Task>(colRef, task)
+      } catch (e) {
+        return await Promise.reject(e)
+      }
       return await Promise.resolve()
     }
   }
