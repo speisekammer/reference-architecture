@@ -1,18 +1,30 @@
-import { TaskRepresentation } from 'interactors'
 import { TaskList } from '../TaskList'
-import { Button } from '../Button'
+import { Button } from '../Button/Button'
 import React, { FC } from 'react'
+import useTodoApp from './useTodoApp'
+import { TaskRepresentation } from 'interactors'
 
-interface TodoAppProps {
-  tasks: TaskRepresentation[]
-  handleClick: () => void
-}
+const TodoApp: FC = () => {
+  const { tasks, taskUseCases } = useTodoApp()
 
-const TodoApp: FC<TodoAppProps> = ({ tasks, handleClick }) => <>
+  if (taskUseCases === undefined) {
+    return <div>loading...</div>
+  }
+
+  const addTask = (task: TaskRepresentation): void => {
+    if (taskUseCases !== undefined) {
+      taskUseCases.addTask(task).then(() => {
+        console.log('added task')
+      }).catch(console.error)
+    }
+  }
+
+  return (<>
   <header className="App-header">Task-App
   </header>
   <TaskList tasks={tasks}></TaskList>
-  <Button handleClick={handleClick}></Button>
-</>
+  <Button handleClick={() => addTask({ title: 'A', description: 'B', checked: false })}></Button>
+</>)
+}
 
 export default TodoApp
