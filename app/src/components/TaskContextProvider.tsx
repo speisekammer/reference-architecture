@@ -4,7 +4,7 @@ import { FirestoreTaskPersistence } from 'firebase-gateway'
 import { TaskPresenter } from '../presenter/TaskPresenter'
 import { TaskContext, TaskContextType } from '../TaskContext'
 
-interface TaskContextProviderProps {
+export interface TaskContextProviderProps {
   children: ReactNode
 }
 
